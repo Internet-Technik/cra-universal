@@ -15,6 +15,8 @@ function staticLoader(app, options) {
     const proxy = require("http-proxy-middleware");
     const craServiceName = process.env.CRA_SERVICE_NAME || 'localhost';
     const craClientPort = process.env.CRA_CLIENT_PORT || 3000;
+    const path = require('path');
+    app.use(express.static(path.resolve('./server-build'), { index: false }));
     app.use(
       ["**/*.*", "/static", "/sockjs-node"],
       proxy({
@@ -25,7 +27,12 @@ function staticLoader(app, options) {
     );
     console.log("Connected to CRA Client dev server");
   } else {
-    app.use(express.static(clientBuildPath, { index: false }));
+    app.use(express.static(clientBuildPath + '/client', {
+      index: false
+    }));
+    app.use(express.static(clientBuildPath + '/server', {
+      index: false
+    }));
   }
 
   return app;
