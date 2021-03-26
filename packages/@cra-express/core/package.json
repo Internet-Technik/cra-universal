@@ -19,8 +19,8 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@cra-express/static-loader": "^4.3.0",
-    "@cra-express/universal-loader": "^4.3.0",
+    "@cra-express/static-loader": "4.3.0",
+    "@cra-express/universal-loader": "4.3.0",
     "express": "4.16.3"
   },
   "devDependencies": {
